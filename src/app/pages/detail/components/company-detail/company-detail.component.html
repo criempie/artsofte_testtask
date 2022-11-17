@@ -1,0 +1,10 @@
+<div *ngIf="!loading">
+  <img src="{{ item.logo }}" />
+  <div>
+    <div>{{ item.suffix }} {{ item.business_name }}</div>
+    <div>{{ item.industry }} {{ item.catch_phrase }}</div>
+    <div>{{ item.phone_number }} {{ item.full_address }}</div>
+  </div>
+</div>
+
+<div *ngIf="loading">loading...</div>

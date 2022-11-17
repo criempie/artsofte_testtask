@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CompaniesService } from '@app/pages/list/services/companies.service';
+import { CompaniesService } from '@app/services/companies.service';
 
 @Component({
   selector: 'app-list-page',

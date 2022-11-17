@@ -24,7 +24,8 @@
     ],
     "paths": {
       "@dto/*": ["src/dto/*"],
-      "@app/*": ["src/app/*"]
+      "@services/*": ["src/app/services/*"],
+      "@app/*": ["src/app/*"],
     },
     "strictPropertyInitialization": false,
   },
