@@ -1,0 +1,12 @@
+.company-list__item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  gap: 1em;
+  align-items: center;
+  position: relative;
+}
+
+.company-list__item__logo {
+  width: 100%;
+}
