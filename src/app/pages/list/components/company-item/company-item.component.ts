@@ -11,4 +11,8 @@ export class CompanyItemComponent {
   item: CompanyDto;
 
   constructor() {}
+
+  handleClick(event: Event) {
+    // event.stopPropagation();
+  }
 }

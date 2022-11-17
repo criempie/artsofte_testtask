@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class CompaniesService {
-  private static REQUEST_SIZE = 12;
+  private static REQUEST_SIZE = 4;
 
   public items: CompanyDto[] = [];
 

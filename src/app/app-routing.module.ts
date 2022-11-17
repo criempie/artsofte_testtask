@@ -5,7 +5,7 @@ import { ListPageComponent } from '@app/pages/list/components/list-page/list-pag
 const routes: Routes = [
   // { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: '', component: ListPageComponent },
-  // { path: '/detail/:id' },
+  // { path: 'detail/:id', component: ListPageComponent },
   // { path: '/map' },
 ];
 

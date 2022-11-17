@@ -1,4 +1,4 @@
-<div class="company-list">
+<div class="company-list" (mouseup)="handleClick($event)">
   <list-page-company-item
     *ngFor="let item of items"
     [item]="item"
