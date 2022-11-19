@@ -1,3 +1,10 @@
+<company-list-company-sorter
+  [items]="sorterItems"
+  [direction]="companiesService.sortDirection"
+  (directionOnChange)="changeSortDirectionHandler($event)"
+  (selectedOnChange)="changeSortSelectedValueHandler($event)"
+></company-list-company-sorter>
+
 <list-page-company-list
   [items]="companiesService.items"
 ></list-page-company-list>

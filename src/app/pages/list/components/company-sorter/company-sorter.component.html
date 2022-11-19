@@ -1,0 +1,12 @@
+<select (change)="selectChangeHandler($event)">
+  <option></option>
+  <option *ngFor="let item of items" [value]="item.value">
+    {{ item.alias ?? item.value }}
+  </option>
+</select>
+
+<button *ngIf="direction" [ngSwitch]="direction" (click)="changeDirection()">
+  <ng-container *ngSwitchCase="'up'">&#9650;</ng-container>
+  <ng-container *ngSwitchCase="'down'">&#9660;</ng-container>
+  <!-- <ng-container *ngSwitchDefault>&#8212;</ng-container> -->
+</button>
