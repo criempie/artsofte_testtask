@@ -6,6 +6,7 @@ export type FilterValue = string | number | boolean | null | undefined;
 export interface Filter {
   key: string;
   value: string | number | boolean | null | undefined;
+  strict?: boolean;
 }
 
 type DeletedItemsByFilter = { item: any; index: number }[];
@@ -69,7 +70,14 @@ export class FilterService {
 
     for (let i = this._items.length - 1; i >= 0; i--) {
       const item = this._items[i];
-      if (item[filter.key] !== filter.value) {
+
+      if (
+        !(
+          (!filter.strict &&
+            item[filter.key].toLowerCase().includes(filter.value)) ||
+          item[filter.key] === filter.value
+        )
+      ) {
         this._items.splice(i, 1);
         deleted.push({ item, index: i });
       }
@@ -81,29 +89,4 @@ export class FilterService {
   public static getValuesByKey<T, K extends keyof T>(arr: T[], key: K) {
     return arr.map((obj) => obj[key]);
   }
-
-  // public static filter<T extends Record<string, any>>(
-  //   array: T[],
-  //   key: string,
-  //   value: unknown
-  // ) {
-  //   return array.filter((obj) => FilterService._filterFn(obj, key, value));
-  // }
-
-  // private static _filterNotStrict<T>(obj: T, key: keyof T, value: string) {
-  //   const _value = obj[key];
-  //   if (typeof _value === 'string') {
-  //     return _value.includes(value);
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  // private static _filterFn(
-  //   obj: Record<string, unknown>,
-  //   key: string,
-  //   value: unknown
-  // ) {
-  //   return obj[key] === value;
-  // }
 }

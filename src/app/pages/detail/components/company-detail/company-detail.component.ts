@@ -12,17 +12,13 @@ export class CompanyDetailComponent {
   item: CompanyDto;
   loading = true;
 
-  constructor(
-    private _route: ActivatedRoute,
-    private _router: Router,
-    private _companiesService: CompaniesService
-  ) {
+  constructor(private _route: ActivatedRoute, private _router: Router) {
     const id = this._route.snapshot.paramMap.get('id');
 
     if (!id) {
       this._router.navigate(['/'], { replaceUrl: true });
     } else {
-      this._companiesService.fetchCompany(id!).then((item) => {
+      CompaniesService.fetchCompany(id!).then((item) => {
         this.item = item;
         this.loading = false;
       });

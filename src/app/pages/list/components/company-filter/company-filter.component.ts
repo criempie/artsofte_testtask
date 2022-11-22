@@ -1,16 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  NonNullableFormBuilder,
-} from '@angular/forms';
-import { CompaniesService } from '@services/companies.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { FilterService } from '@services/filter.service';
 import { debounceTime } from 'rxjs';
 
 interface Form {
-  name: FormControl<string>;
+  business_name: FormControl<string>;
   type: FormControl<string>;
   industry: FormControl<string>;
 }
@@ -25,16 +19,17 @@ type ExtractFormControl<T> = Partial<{
   styleUrls: ['./company-filter.component.scss'],
 })
 export class CompanyFilterComponent implements OnInit {
+  private _notStrictedFields: (string | keyof Form)[] = ['business_name'];
+
   filtersVariants = this._filterService.filtersVariants;
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _filterService: FilterService,
-    private _companiesService: CompaniesService
+    private _filterService: FilterService
   ) {}
 
   public form = this._formBuilder.nonNullable.group<Form>({
-    name: this._formBuilder.nonNullable.control(''),
+    business_name: this._formBuilder.nonNullable.control(''),
     type: this._formBuilder.nonNullable.control(''),
     industry: this._formBuilder.nonNullable.control(''),
   });
@@ -49,7 +44,11 @@ export class CompanyFilterComponent implements OnInit {
 
   private _formChangeHandler(values: ExtractFormControl<Form>) {
     Object.entries(values).forEach(([key, value]) =>
-      this._filterService.setFilter(key, { key, value })
+      this._filterService.setFilter(key, {
+        key,
+        value,
+        strict: !this._notStrictedFields.includes(key),
+      })
     );
   }
 }
