@@ -1,9 +1,7 @@
-<company-list-company-sorter
-  [items]="sorterItems"
-  [direction]="companiesService.sortDirection"
-  (directionOnChange)="changeSortDirectionHandler($event)"
-  (selectedOnChange)="changeSortSelectedValueHandler($event)"
-></company-list-company-sorter>
+<company-list-company-sorter></company-list-company-sorter>
+
+<!-- [direction]="companiesService.sortDirection" -->
+<company-list-company-filter></company-list-company-filter>
 
 <list-page-company-list
   [items]="companiesService.items"

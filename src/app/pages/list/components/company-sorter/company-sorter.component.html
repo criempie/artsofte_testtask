@@ -1,12 +1,16 @@
-<select (change)="selectChangeHandler($event)">
+<select (change)="selectedChangeHandler($event)">
   <option></option>
-  <option *ngFor="let item of items" [value]="item.value">
+  <option *ngFor="let item of sortService.variants" [value]="item.value">
     {{ item.alias ?? item.value }}
   </option>
 </select>
 
-<button *ngIf="direction" [ngSwitch]="direction" (click)="changeDirection()">
-  <ng-container *ngSwitchCase="'up'">&#9650;</ng-container>
-  <ng-container *ngSwitchCase="'down'">&#9660;</ng-container>
+<button
+  *ngIf="sortService.selected"
+  [ngSwitch]="sortService.reversed"
+  (click)="sortService.changeReversed()"
+>
+  <ng-container *ngSwitchCase="true">&#9650;</ng-container>
+  <ng-container *ngSwitchCase="false">&#9660;</ng-container>
   <!-- <ng-container *ngSwitchDefault>&#8212;</ng-container> -->
 </button>

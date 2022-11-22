@@ -1,0 +1,15 @@
+<form [formGroup]="form">
+  <select formControlName="industry">
+    <option></option>
+    <option *ngFor="let item of filtersVariants['industry']" [value]="item">
+      {{ item }}
+    </option>
+  </select>
+  <select formControlName="type">
+    <option></option>
+    <option *ngFor="let item of filtersVariants['type']" [value]="item">
+      {{ item }}
+    </option>
+  </select>
+  <input formControlName="name" />
+</form>
