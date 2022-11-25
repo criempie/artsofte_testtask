@@ -51,6 +51,7 @@ export class FilterService {
 
     if (this._filters[name]?.deletedItems) {
       // this._items.push(...this._filters[name].deletedItems.map((v) => v.item));
+      this._filterDeletedItems(this._filters[name].deletedItems, name);
       this._filters[name].deletedItems
         .reverse()
         .forEach((item) => this._items.splice(item.index, 0, item.item));
@@ -86,7 +87,39 @@ export class FilterService {
     return deleted;
   }
 
-  public static getValuesByKey<T, K extends keyof T>(arr: T[], key: K) {
-    return arr.map((obj) => obj[key]);
+  private _filterDeletedItems(
+    items: DeletedItemsByFilter,
+    excludeName: string
+  ) {
+    for (const [name, filter] of Object.entries(this._filters)) {
+      if (items.length === 0 || !filter.value) break;
+      if (name === excludeName) continue;
+
+      const deletedItems = [];
+      for (let i = items.length - 1; i >= 0; i--) {
+        console.log(items, i);
+        if (
+          !(
+            (!filter.strict &&
+              items[i].item[filter.key].toLowerCase().includes(filter.value)) ||
+            items[i].item[filter.key] === filter.value
+          )
+        ) {
+          deletedItems.push(...items.splice(i, 1));
+        }
+      }
+
+      this._filters[name].deletedItems.push(...deletedItems);
+    }
+  }
+
+  public static getValuesByKey<T, K extends keyof T>(
+    arr: T[],
+    key: K
+  ): string[] {
+    const items = new Set();
+    arr.forEach((item) => items.add(item[key]));
+
+    return [...items] as string[];
   }
 }
