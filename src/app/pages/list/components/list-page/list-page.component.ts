@@ -9,5 +9,5 @@ import { FilterService } from '@services/filter.service';
   styleUrls: ['./list-page.component.scss'],
 })
 export class ListPageComponent {
-  constructor(public companiesService: CompaniesService) {}
+  constructor() {}
 }

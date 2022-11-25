@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CompanyFilterComponent } from '@app/pages/list/components/company-filter/company-filter.component';
 import { FilterService } from '@services/filter.service';
 import { SortService } from '@services/sort.service';
+import { InfiniteScrollService } from '@services/infinite-scroll.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,12 @@ import { SortService } from '@services/sort.service';
     CompanySorterComponent,
     CompanyFilterComponent,
   ],
-  providers: [CompaniesService, FilterService, SortService],
+  providers: [
+    CompaniesService,
+    FilterService,
+    SortService,
+    InfiniteScrollService,
+  ],
   imports: [CommonModule, ReactiveFormsModule],
 })
 export class ListPageModule {}

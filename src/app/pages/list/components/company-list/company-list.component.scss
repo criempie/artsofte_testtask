@@ -1,8 +1,15 @@
+:host {
+  display: block;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
 .company-list {
   width: 100%;
   padding: 1em;
   display: grid;
   gap: 2em;
+  position: relative;
 
   border: 1px solid black;
 }
