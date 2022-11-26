@@ -78,22 +78,16 @@ export class InfiniteScrollService {
       if (entry.target === this._firstItemRef?.nativeElement) {
         const addedItems = this._addItemsTo('start');
         if (addedItems.length !== 0) {
-          // this._root.nativeElement.scrollTo(
-          //   0,
-          //   this._root.nativeElement.scrollHeight / 2
-          // );
+          this._root.nativeElement.scrollTo(
+            0,
+            this._root.nativeElement.scrollHeight / 2
+          );
           this._removeItemsFrom('end', addedItems.length);
-          console.log(this._viewEdges.slice());
         }
       } else if (entry.target === this._lastItemRef?.nativeElement) {
         const addedItems = this._addItemsTo('end');
         if (addedItems.length !== 0) {
-          // this._root.nativeElement.scrollTo(
-          //   0,
-          //   this._root.nativeElement.scrollHeight / 2
-          // );
           this._removeItemsFrom('start', addedItems.length);
-          console.log(this._viewEdges.slice());
         }
       }
     }

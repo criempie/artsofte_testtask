@@ -1,10 +1,10 @@
-<div *ngIf="!loading">
-  <img src="{{ item.logo }}" />
-  <div>
+<ng-container *ngIf="!loading">
+  <img class="detail__image" src="{{ item.logo }}" />
+  <div class="detail__description">
     <div>{{ item.suffix }} {{ item.business_name }}</div>
     <div>{{ item.industry }} {{ item.catch_phrase }}</div>
     <div>{{ item.phone_number }} {{ item.full_address }}</div>
   </div>
-</div>
+</ng-container>
 
 <div *ngIf="loading">loading...</div>

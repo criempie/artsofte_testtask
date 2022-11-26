@@ -1,3 +1,18 @@
-<div class="layout">
-  <ng-component></ng-component>
-</div>
+<nav class="layout__nav">
+  <a
+    class="layout__nav-link"
+    routerLink="/"
+    [routerLinkActiveOptions]="{ exact: true }"
+    routerLinkActive="layout__nav-link_active"
+    >Список</a
+  >
+  <a
+    class="layout__nav-link"
+    routerLink="map"
+    routerLinkActive="layout__nav-link_active"
+    >Карта</a
+  >
+</nav>
+<main>
+  <router-outlet></router-outlet>
+</main>

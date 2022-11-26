@@ -1,11 +1,10 @@
-.company-list__item {
+:host {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 6fr;
   gap: 1em;
   align-items: center;
   position: relative;
-  // pointer-events: none;
 }
 
 .company-list__item__logo {

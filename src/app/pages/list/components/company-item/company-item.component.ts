@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { CompanyDto } from '@dto/company.dto';
 
 @Component({
@@ -10,9 +10,9 @@ export class CompanyItemComponent {
   @Input()
   item: CompanyDto;
 
-  constructor() {}
-
-  handleClick(event: Event) {
-    // event.stopPropagation();
+  @HostBinding('attr.data-item-id') get id() {
+    return this.item.id;
   }
+
+  constructor() {}
 }

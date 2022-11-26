@@ -1,4 +1,33 @@
-.layout {
+:host {
+  display: block;
   padding: 3rem;
   position: relative;
+  * {
+    display: block;
+  }
+}
+
+.layout__nav {
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+.layout__nav-link {
+  width: max-content;
+  align-self: center;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: .3em .7em;
+  background-color: #ddd;
+}
+
+.layout__nav-link_active {
+  background-color: #aaa;
+}
+
+.layout__nav-link:hover {
+  filter: brightness(90%);
+  cursor: pointer;
 }

@@ -8,6 +8,7 @@ import {
   QueryList,
   ViewChild,
   ViewChildren,
+  HostListener,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { CompanyItemComponent } from '@app/pages/list/components/company-item/company-item.component';
@@ -27,6 +28,13 @@ export class CompanyListComponent implements AfterViewInit {
   items: CompanyDto[] = this._companiesService.items;
   itemTagName: string;
 
+  @HostListener('mouseup', ['$event'])
+  public handleClick(event: Event) {
+    const target = this._getItemElement(event.target as HTMLElement);
+
+    if (target) this._router.navigate(['/detail', target.dataset['itemId']]);
+  }
+
   constructor(
     private _factoryResolver: ComponentFactoryResolver,
     private _router: Router,
@@ -43,16 +51,6 @@ export class CompanyListComponent implements AfterViewInit {
     this._infiniteScrollService.initRefs(this._hostRef, this.itemsRef);
     this._infiniteScrollService.requestNewItems =
       this._companiesService.addCompanies;
-  }
-
-  public handleClick(event: Event) {
-    const target = this._getItemElement(event.target as HTMLElement);
-
-    if (target && target.firstChild)
-      this._router.navigate([
-        '/detail',
-        (target.firstChild as HTMLElement).dataset['itemId'],
-      ]);
   }
 
   private _getItemElement(_target: HTMLElement) {

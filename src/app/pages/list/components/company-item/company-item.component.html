@@ -1,16 +1,9 @@
-<div class="company-list__item" [attr.data-item-id]="item.id">
-  <img
-    src="{{ item.logo }}"
-    class="company-list__item__logo"
-    (click)="handleClick($event)"
-  />
-  <div class="company-list__item__description" (click)="handleClick($event)">
-    id : {{ item.id }}
-    <div class="company-list__item__name">
-      {{ item.suffix }} {{ item.business_name }}
-    </div>
-    <div class="company-list__item__other">
-      {{ item.industry }} {{ item.type }}
-    </div>
+<img src="{{ item.logo }}" class="company-list__item__logo" />
+<div class="company-list__item__description">
+  <div class="company-list__item__name">
+    {{ item.suffix }} {{ item.business_name }}
+  </div>
+  <div class="company-list__item__other">
+    {{ item.industry }} {{ item.type }}
   </div>
 </div>
